@@ -1,5 +1,6 @@
 import React from 'react';
-import Navigation from '../../../Shared/Navigation/Navigation';
+import Navigation from '../../Shared/Navigation/Navigation';
+import Appointmentbanner from '../Appointmentbanner/Appointmentbanner';
 import Services from '../Services/Services';
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Navigation/>
             <Services/>
+            <Appointmentbanner/>
         </div>
     );
 };

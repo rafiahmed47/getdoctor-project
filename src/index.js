@@ -7,7 +7,6 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      <h1>hello world</h1>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

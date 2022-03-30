@@ -1,6 +1,7 @@
 .app {
     text-align: center;
     align-items: center;
+    margin: 0 2rem;
     background-color: whitesmoke;
-    height: 100vh;
-  }
+    scroll-behavior: smooth;
+    }
