@@ -21,7 +21,7 @@ const Banner = () => {
     return (
         <Container style={bannerBg} sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
+                <Grid item style={{ ...verticalCenter, textAlign: 'left', margin: '0 2rem' }} xs={12} md={6}>
                     <Box>
                         <Typography variant="h3">
                             Your New Smile <br />
@@ -33,7 +33,7 @@ const Banner = () => {
                         <Button variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Get Appointment</Button>
                     </Box>
                 </Grid>
-                <Grid item xs={12} md={6} style={verticalCenter} >
+                <Grid item xs={12} md={6} style={{...verticalCenter, justifyContent: 'center'}} >
                     <img style={{ width: '350px' }} src={chair} alt="" />
                 </Grid>
 
