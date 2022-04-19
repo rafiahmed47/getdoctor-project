@@ -1,50 +1,53 @@
 import React, { useState } from 'react';
-import {TextField, Button, Alert} from '@mui/material'
+import { TextField, Button, Alert } from '@mui/material'
+import logo from '../../../images/logo.png'
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('')
     const [success, setSuccess] = useState(false)
-    const handleBlur = e =>{
-        const adminEmail= e.target.value;
+    const handleBlur = e => {
+        const adminEmail = e.target.value;
         setEmail(adminEmail)
     }
     const handleSubmit = e => {
-        const user = {email}
-        fetch('https://vast-shelf-93304.herokuapp.com/user/admin',{
+        const user = { email }
+        fetch('http://localhost:5000/user/admin', {
             method: 'PUT',
-            headers:{
-                'content-type' : 'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data =>{
-            if (data.modifiedCount) {
-                setSuccess(true)
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    setSuccess(true)
+                }
+            })
         e.preventDefault()
     }
     console.log(email)
     return (
         <div>
-            <h1>Create Admin</h1>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <img className='main_logo' src={logo} alt="" />
+                <h2>Create Admin</h2>
+            </div>
             <form onSubmit={handleSubmit}>
                 <TextField
                     sx={{ width: '40%', m: 1 }}
-                    label="email"
+                    label="Write Email of admin here"
                     type="email"
                     onBlur={handleBlur}
-                    variant="filled"
+                    variant="standard"
                     size="small"
                 />
-                <br />
                 <Button type="submit" variant="contained">Make Admin</Button>
             </form>
             {success &&
-                        <Alert severity="success">
-                            Registration success
-                        </Alert>}
+                <Alert severity="success">
+                    Registration success
+                </Alert>}
         </div>
     );
 };

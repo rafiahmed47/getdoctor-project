@@ -1,5 +1,6 @@
 import { Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import logo from '../../../images/logo.png'
 
 const AddDoctor = () => {
     const [email, setEmail] = useState('')
@@ -14,7 +15,7 @@ const AddDoctor = () => {
         
 
         
-        fetch('https://vast-shelf-93304.herokuapp.com/doctors',{
+        fetch('http://localhost:5000/doctors',{
             method: 'POST',
             body: formData
         })
@@ -31,9 +32,10 @@ const AddDoctor = () => {
     }
     return (
         <div>
-            <Typography variant='h4'>
-                Here you can add doctor and upload image
-            </Typography>
+           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+           <img className='main_logo' src={logo} alt=""/>
+           <h2>Add Doctors</h2>
+           </div>
             <form onSubmit={handleSubmit}>
                 <TextField
                     require
@@ -49,12 +51,12 @@ const AddDoctor = () => {
                     variant="standard"
                 />
                 <br />
-                <input
+                <input style={{marginTop: '20px'}}
                 onBlur={e => setImg(e.target.files[0])}
                     type="file"
                 />
                 <br />
-                <Button type='submit'>Add Doctor</Button>
+                <Button type='submit' variant="contained" style={{marginTop: '20px'}}>Add Doctor</Button>
             </form>
         </div>
     );

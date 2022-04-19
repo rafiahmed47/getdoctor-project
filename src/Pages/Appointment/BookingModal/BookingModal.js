@@ -21,7 +21,7 @@ const style = {
 
 const BookingModal = ({ handleClose, open, bookings, date, setSuccess }) => {
     const { name, time } = bookings;
-    const [bookingInfo, setBookingInfo] = useState()
+    const [bookingInfo, setBookingInfo] = useState({})
     const {user} = useAuth()
 
     const handleOnBlur = e => {
@@ -40,7 +40,7 @@ const BookingModal = ({ handleClose, open, bookings, date, setSuccess }) => {
             date: date.toLocaleDateString()
         }
 
-        fetch('https://vast-shelf-93304.herokuapp.com/appointments', {
+        fetch('http://localhost:5000/appointments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

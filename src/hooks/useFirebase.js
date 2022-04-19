@@ -20,7 +20,6 @@ const useFirebase = () => {
             .then((userCredential) => {
                 setAuthError('');
                 const newUser = {email, displayName: name}
-                console.log(newUser)
                 setUser(newUser)
                 sendUser(email, name, 'POST')
                 updateProfile(auth.currentUser, {
@@ -38,7 +37,7 @@ const useFirebase = () => {
     const signInWithGoogle = () => {
         setIsLoading(true)
         signInWithPopup(auth, googleProvider)
-            .then((result) => {
+        .then((result) => {
                 const user = result.user;
                 sendUser(user.email, user.displayName, 'PUT')
                 setAuthError('')
@@ -65,10 +64,12 @@ const useFirebase = () => {
     }, [])
 
 
-    const loginUser = (email, password) => {
+    const loginUser = (email, password, location, navigate) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const destination = location?.state.from || '/'
+                navigate.push(destination)
                 setAuthError('')
             })
             .catch((error) => {
@@ -79,7 +80,7 @@ const useFirebase = () => {
 
     const sendUser = (email, displayName, method) =>{
         const user = {email, displayName}
-        fetch('https://vast-shelf-93304.herokuapp.com/user', {
+        fetch('http://localhost:5000/user', {
             method: method,
             headers: {
                 'content-type' : 'application/json'

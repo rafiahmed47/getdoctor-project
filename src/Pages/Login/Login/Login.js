@@ -1,12 +1,16 @@
 import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import login from "../../../images/login.png"
+import Navigation from '../../../Shared/Navigation/Navigation';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({})
     const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth()
+
+    const location = useLocation()
+    const navigate = useNavigate()
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -15,7 +19,7 @@ const Login = () => {
         setLoginData(newLoginData)
     }
     const handleLoginSubmit = e => {
-        loginUser(loginData.email, loginData.password)
+        loginUser(loginData.email, loginData.password, location, navigate)
 
         e.preventDefault()
     }
@@ -23,6 +27,8 @@ const Login = () => {
         signInWithGoogle()
     }
     return (
+       <>
+       <Navigation/>
         <Container>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={6} sx={{ mt: 8 }}>
@@ -77,6 +83,7 @@ const Login = () => {
                 </Grid>
             </Grid>
         </Container>
+       </>
     );
 };
 

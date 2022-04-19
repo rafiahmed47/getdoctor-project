@@ -8,44 +8,60 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-
+import logo from '../../images/logo.png'
 
 const Navigation = () => {
     const { user, logout } = useAuth()
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        DOCTORS PORTAL
-                    </Typography>
-                    <Link to="/appointment">
-                        <Button color="inherit">Appointment</Button>
-                    </Link>
-                    <Link to="/dashboard">
-                        <Button color="inherit">Dashboard</Button>
-                    </Link>
+        <div className='app_navigation'>
+            <img src={logo} className="main_logo" alt="" />
+            <nav>
+                <ul className='app_navigation-links'>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/appointment">Appointment</a></li>
                     {
-                        user?.email ? 
-                        <Button onClick={logout} color="inherit">Logout</Button>
-                        :
-                            <NavLink style={{textDecoration: 'none', color: 'white'}} 
-                            to="/login">
-                                <Button color="inherit">Login</Button>
-                            </NavLink>
+                        user.email ?
+                            <Box>
+                                <li><a href="/dashboard">dashboard</a></li>
+                                <Button onClick={logout} color="inherit">Logout</Button>
+                            </Box> :
+                            <li><a href="/login">Login</a></li>
+
                     }
-                </Toolbar>
-            </AppBar>
-        </Box>
+
+                </ul>
+            </nav>
+        </div>
+
+
+        // <Box sx={{ flexGrow: 1 }}>
+        //     <AppBar position="static">
+        //         <Toolbar>
+        //             <img src={logo} className='main_logo' alt="" />
+        //             <Link to="/">
+        //                 <Button color="inherit">Home</Button>
+        //             </Link>
+        //             <Link to="/appointment">
+        //                 <Button color="inherit">Appointment</Button>
+        //             </Link>
+        //             {
+        //                 user?.email ?
+        //                     <Box>
+        //                         <NavLink NavLink style={{ textDecoration: 'none', color: 'white' }}
+        //                             to="/dashboard">
+        //                             <Button color="inherit">Dashboard</Button>
+        //                         </NavLink>
+        //                         <Button onClick={logout} color="inherit">Logout</Button>
+        //                     </Box>
+        //                     :
+        //                     <NavLink style={{ textDecoration: 'none', color: 'white' }}
+        //                         to="/login">
+        //                         
+        //                     </NavLink>
+        //             }
+        //         </Toolbar>
+        //     </AppBar>
+        // </Box >
     );
 };
 

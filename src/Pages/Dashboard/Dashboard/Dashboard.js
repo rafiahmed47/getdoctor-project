@@ -21,9 +21,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Calender from '../../../Shared/Calender/Calender';
+import { Grid } from '@mui/material';
+import Appointments from '../Appointments/Appointments';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddDoctor from '../AddDoctor/AddDoctor';
-
 
 const drawerWidth = 200;
 
@@ -44,10 +46,10 @@ function Dashboard(props) {
           <Link to="/appointment">appointment</Link>
         </nav>
         <nav>
-          <Link to="/dashboard/addAdmin">Make Admin</Link>
+          <Link to="/dashboard/admin">Make Admin</Link>
         </nav>
         <nav>
-          <Link to="/dashboard/addDoctor">Add doctor</Link>
+          <Link to="/dashboard/doctor">Add doctor</Link>
         </nav>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -125,25 +127,14 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        
         <Routes>
-          
-        <Route path="/dashboard" element={<DashboardHome />} />
-        <Route path="/dashboard/addAdmin" element={<MakeAdmin />} />
-        <Route path="/dashboard/addDoctor" element={<AddDoctor />} />
-      </Routes>
-
+          <Route path="" element={<DashboardHome />} />
+          <Route path="admin" element={<MakeAdmin />} />
+          <Route path="doctor" element={<AddDoctor />} />
+        </Routes>
       </Box>
     </Box>
   );
 }
-
-Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
 export default Dashboard;

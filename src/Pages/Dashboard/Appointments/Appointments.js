@@ -7,51 +7,58 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Navigation from '../../../Shared/Navigation/Navigation';
+import { Link } from 'react-router-dom';
 
 
 
 const Appointments = ({ date }) => {
-    const [userAppointments, setUserAppointments] = useState([])
+    const [appointments, setAppointments] = useState([])
     const { user } = useAuth()
     useEffect(() => {
-        const url = `https://vast-shelf-93304.herokuapp.com/appointment?email=${user.email}&date=${date}`
+        const url = `http://localhost:5000/appointment?email=${user.email}&date=${date}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setUserAppointments(data)
+                setAppointments(data)
             })
     }, [date])
+    console.log({appointments})
     return (
         <div>
-            <h1>appointments</h1>
-
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="center">Time</TableCell>
-                            <TableCell align="right">Action</TableCell>
+        <h2>Appointments: {appointments.length}</h2>
+        <TableContainer component={Paper}>
+            <Table aria-label="Appointments table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Name</TableCell>
+                        <TableCell align="right">Time</TableCell>
+                        <TableCell align="right">Service</TableCell>
+                        <TableCell align="right">Action</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {appointments.map((row) => (
+                        <TableRow
+                            key={row._id}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                {row.patientName}
+                            </TableCell>
+                            <TableCell align="right">{row.time}</TableCell>
+                            <TableCell align="right">{row.serviceName}</TableCell>
+                            {/* <TableCell align="right">{row.payment ?
+                                'Paid' :
+                                <Link to={`/dashboard/payment/${row._id}`}><button>Pay</button></Link>
+                            }</TableCell> */}
                         </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {userAppointments.map((row) => (
-                            <TableRow
-                                key={row._id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {row.patientName}
-                                </TableCell>
-                                <TableCell align="center">{row.time}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    </div>
     );
 };
 

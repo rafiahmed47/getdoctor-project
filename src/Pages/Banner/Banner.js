@@ -11,6 +11,7 @@ const bannerBg = {
 }
 const verticalCenter = {
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     height: 450
 }
@@ -33,7 +34,7 @@ const Banner = () => {
     return (
         <Box sx={{ flexGrow: 1, height: '550px' }} style={bannerBg}>
             <Grid container spacing={2} style={verticalCenter}>
-                <Grid item xs={12} md={6} style={{ textAlign: 'left', mt: 20}}>
+                <Grid item xs={12} md={5} style={{ textAlign: 'left'}}>
                     <Typography variant="h2" sx={{mt: 3}}>
                         Your New Smile <br />
                         Starts Here
