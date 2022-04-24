@@ -7,28 +7,30 @@ const background = {
     background: `url(${bg})`,
     backgroundColor: 'rgba(45, 58, 74, 0.9)',
     backgroundBlendMode: 'darken, luminosity',
-    marginTop: 175
+    marginTop: 150,
+    borderRadius: '20px'
+    
 }
 const HomeInput = () => {
     return (
         <Container style={background}>
-            <Typography variant='h6'>
+            <Typography variant='h5' style={{color: 'white', paddingTop: '3rem'}}>
                 Contact Us
             </Typography>
-            <Typography variant='h3'>
+            <Typography variant='h3' style={{ paddingTop: '1rem'}}>
                 Always Connect With Us
             </Typography>
 
-           <form >
+           <form  style={{marginTop: '20px'}}>
             <TextField
-              sx={{ width: '90%', m: 1 }}
+              sx={{ width: '70%', m: 1 }}
               id="filled-size-small"
               defaultValue="Email Address*"
               variant="filled"
               size="small"
             />
             <TextField
-              sx={{ width: '90%', m: 1 }}
+              sx={{ width: '70%', m: 1 }}
               id="filled-size-small"
               defaultValue="Subject*"
               variant="filled"
@@ -36,7 +38,7 @@ const HomeInput = () => {
             />
             <TextField
               id="outlined-multiline-static"
-              sx={{ width: '90%', m: 1 }}
+              sx={{ width: '70%', m: 1 }}
               multiline
               variant="filled"
               rows={4}

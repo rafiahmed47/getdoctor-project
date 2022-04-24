@@ -7,10 +7,7 @@ import Register from "./Pages/Login/Register/Register";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
-import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
-import AddDoctor from "./Pages/Dashboard/AddDoctor/AddDoctor";
-import Appointments from "./Pages/Dashboard/Appointments/Appointments";
-
+import NoRoute from "./Pages/NoRoute/NoRoute";
 function App() {
   return (
     <div className="App">
@@ -37,6 +34,8 @@ function App() {
               }
             />
           </Routes>
+
+          <Route path="*" element={<NoRoute/>} />
         </BrowserRouter>
       </AuthProvider>
     </div>

@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: -50px;
 }
 
 .app_navigation-links{
@@ -20,4 +21,13 @@
   align-items: center;
 
   list-style: none;
+}
+
+.app_navigation-links li {
+  margin: 0 20px
+}
+
+.app_navigation-links li a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }

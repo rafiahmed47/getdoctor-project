@@ -15,9 +15,9 @@ const Doctors = () => {
 
     return (
         <div>
-            <h1>available doctors {doctors.length}</h1>
+            <h1 style={{color: 'rgb(14, 105, 241)', marginTop: '100px'}}>Our Doctors</h1>
             <Container>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} style={{marginTop: '50px'}}>
                     {
                         doctors.map(doctor => <Doctor
                         key={doctor._id}

@@ -26,6 +26,8 @@ import { Grid } from '@mui/material';
 import Appointments from '../Appointments/Appointments';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddDoctor from '../AddDoctor/AddDoctor';
+import useAuth from '../../../hooks/useAuth';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 200;
 
@@ -35,6 +37,7 @@ function Dashboard(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const { isAdmin } = useAuth()
   // let {url, path} = useMatch('/dashboard')
 
   const drawer = (
@@ -45,12 +48,14 @@ function Dashboard(props) {
         <nav>
           <Link to="/appointment">appointment</Link>
         </nav>
-        <nav>
-          <Link to="/dashboard/admin">Make Admin</Link>
-        </nav>
-        <nav>
-          <Link to="/dashboard/doctor">Add doctor</Link>
-        </nav>
+        {isAdmin && <Box>
+          <nav>
+            <Link to="/dashboard/admin">Make Admin</Link>
+          </nav>
+          <nav>
+            <Link to="/dashboard/doctor">Add doctor</Link>
+          </nav>
+        </Box>}
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -129,8 +134,16 @@ function Dashboard(props) {
         <Toolbar />
         <Routes>
           <Route path="" element={<DashboardHome />} />
-          <Route path="admin" element={<MakeAdmin />} />
-          <Route path="doctor" element={<AddDoctor />} />
+          <Route path="admin"
+            element={
+              <AdminRoute>
+                <MakeAdmin />
+              </AdminRoute>} />
+          <Route path="doctor"
+            element={
+              <AdminRoute>
+                <AddDoctor />
+              </AdminRoute>} />
         </Routes>
       </Box>
     </Box>

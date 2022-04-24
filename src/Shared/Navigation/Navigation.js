@@ -12,6 +12,11 @@ import logo from '../../images/logo.png'
 
 const Navigation = () => {
     const { user, logout } = useAuth()
+    const flex = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
     return (
         <div className='app_navigation'>
             <img src={logo} className="main_logo" alt="" />
@@ -21,9 +26,9 @@ const Navigation = () => {
                     <li><a href="/appointment">Appointment</a></li>
                     {
                         user.email ?
-                            <Box>
+                            <Box style={flex}>
                                 <li><a href="/dashboard">dashboard</a></li>
-                                <Button onClick={logout} color="inherit">Logout</Button>
+                                <Button onClick={logout} style={{margin: '0 f20px'}} color="inherit">Logout</Button>
                             </Box> :
                             <li><a href="/login">Login</a></li>
 
