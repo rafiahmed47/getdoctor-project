@@ -40,7 +40,7 @@ const BookingModal = ({ handleClose, open, bookings, date, setSuccess }) => {
             date: date.toLocaleDateString()
         }
 
-        fetch('http://localhost:5000/appointments', {
+        fetch('https://getdoctor-project-server.herokuapp.com/appointments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

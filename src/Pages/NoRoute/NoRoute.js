@@ -1,9 +1,10 @@
 import React from 'react';
+import ErrorImg from '../../images/error.gif'
 
 const NoRoute = () => {
     return (
         <div>
-            <h1>404 ROute not found</h1>
+            <img src={ErrorImg} style={{width: '100%', height: '100vh'}} alt=""/>
         </div>
     );
 };

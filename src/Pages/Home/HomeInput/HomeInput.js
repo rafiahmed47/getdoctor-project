@@ -45,7 +45,7 @@ const HomeInput = () => {
               defaultValue="Your Message*"
             />
             <br />
-            <Button variant="contained">SUBMIT</Button>
+            <Button variant="contained" onClick={() => alert('Something Went Wrong')}>SUBMIT</Button>
            </form>
         </Container>
     );

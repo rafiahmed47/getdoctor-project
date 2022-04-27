@@ -33,9 +33,8 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="*" element={<NoRoute/>} />
           </Routes>
-
-          <Route path="*" element={<NoRoute/>} />
         </BrowserRouter>
       </AuthProvider>
     </div>

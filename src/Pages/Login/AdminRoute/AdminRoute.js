@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
 
     if (isLoading) { return <CircularProgress /> }
 
-    if (user.email && !isAdmin) {
+    if (!user.email && !isAdmin) {
         return <Navigate to="/no-route-found" state={{ from: location }} />;
     }
     return children;

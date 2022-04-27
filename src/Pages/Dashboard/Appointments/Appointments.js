@@ -16,18 +16,17 @@ const Appointments = ({ date }) => {
     const [appointments, setAppointments] = useState([])
     const { user } = useAuth()
     useEffect(() => {
-        const url = `http://localhost:5000/appointment?email=${user.email}&date=${date}`
+        const url = `https://getdoctor-project-server.herokuapp.com/appointment?email=${user.email}&date=${date}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 setAppointments(data)
             })
-    }, [date])
+    }, [user.email, date])
     console.log({appointments})
     return (
         <div>
-        <h2>Appointments: {appointments.length}</h2>
         <TableContainer component={Paper}>
             <Table aria-label="Appointments table">
                 <TableHead>

@@ -22,7 +22,7 @@ import {
   Link
 } from "react-router-dom";
 import Calender from '../../../Shared/Calender/Calender';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import Appointments from '../Appointments/Appointments';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddDoctor from '../AddDoctor/AddDoctor';
@@ -40,30 +40,27 @@ function Dashboard(props) {
   const { isAdmin } = useAuth()
   // let {url, path} = useMatch('/dashboard')
 
+  const linkStyle = {
+    textDecoration: 'none',
+    margin: '1rem 1rem',
+    color: 'inherit'
+  }
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
         <nav>
-          <Link to="/appointment">appointment</Link>
+          <Button variant='outlined' href="/appointment" style={linkStyle}>Appointment</Button>
         </nav>
         {isAdmin && <Box>
           <nav>
-            <Link to="/dashboard/admin">Make Admin</Link>
+            <Button variant='outlined' href="/dashboard/admin" style={linkStyle}>Make Admin</Button>
           </nav>
           <nav>
-            <Link to="/dashboard/doctor">Add doctor</Link>
+            <Button variant='outlined' href="/dashboard/doctor" style={linkStyle}>Add doctor</Button>
           </nav>
         </Box>}
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
       </List>
     </div>
   );

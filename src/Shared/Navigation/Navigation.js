@@ -19,18 +19,18 @@ const Navigation = () => {
     }
     return (
         <div className='app_navigation'>
-            <img src={logo} className="main_logo" alt="" />
+            <Button href='/'><img src={logo} className="main_logo" alt="" /></Button>
             <nav>
                 <ul className='app_navigation-links'>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/appointment">Appointment</a></li>
+                    <li><Button variant='text' href="/">Home</Button></li>
+                    <li><Button variant='text' href="/appointment">Appointment</Button></li>
                     {
                         user.email ?
                             <Box style={flex}>
-                                <li><a href="/dashboard">dashboard</a></li>
+                                <li><Button variant='text' href="/dashboard">dashboard</Button></li>
                                 <Button onClick={logout} style={{margin: '0 f20px'}} color="inherit">Logout</Button>
                             </Box> :
-                            <li><a href="/login">Login</a></li>
+                            <li><Button variant='text' href="/login">Login</Button></li>
 
                     }
 

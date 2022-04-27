@@ -15,7 +15,7 @@ const AddDoctor = () => {
         
 
         
-        fetch('http://localhost:5000/doctors',{
+        fetch('https://getdoctor-project-server.herokuapp.com/doctors',{
             method: 'POST',
             body: formData
         })

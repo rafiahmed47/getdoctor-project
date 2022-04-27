@@ -78,14 +78,14 @@ const useFirebase = () => {
     }
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/user/${user.email}`)
+        fetch(`https://getdoctor-project-server.herokuapp.com/user/${user.email}`)
         .then(res => res.json())
         .then(data => setIsAdmin(data.admin))
     },[user.email] )
 
     const sendUser = (email, displayName, method) =>{
         const user = {email, displayName}
-        fetch('http://localhost:5000/user', {
+        fetch('https://getdoctor-project-server.herokuapp.com/user', {
             method: method,
             headers: {
                 'content-type' : 'application/json'
