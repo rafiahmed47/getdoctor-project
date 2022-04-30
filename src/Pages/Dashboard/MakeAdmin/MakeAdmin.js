@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Alert } from '@mui/material'
-import logo from '../../../images/logo.png'
+import logo from '../../../images/logo.gif'
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('')

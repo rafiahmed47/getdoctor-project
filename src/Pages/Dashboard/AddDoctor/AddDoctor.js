@@ -1,6 +1,6 @@
 import { Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import logo from '../../../images/logo.png'
+import logo from '../../../images/logo.gif'
 
 const AddDoctor = () => {
     const [email, setEmail] = useState('')
