@@ -16,7 +16,7 @@ const Navigation = () => {
     const { user, logout } = useAuth()
     const [activeMenu, setActiveMenu] = useState(false);
     const [screenSize, setScreenSize] = useState(null);
-    const [toogleMenu, setToggleMenu] = useState(false)
+    const [toggleMenu, setToggleMenu] = useState(false)
 
 
     useEffect(() => {
@@ -43,49 +43,41 @@ const Navigation = () => {
         alignItems: 'center'
     }
     return (
-        <div className='app_navigation'>
+        <nav className='app_navigation'>
             <Button href='/'><img src={logo} className="main_logo" alt="" /></Button>
-            <nav>
+            {activeMenu ? <ul className='app_navigation-links'>
+                <li><Button variant='text' href="/">Home</Button></li>
+                <li><Button variant='text' href="/appointment">Appointment</Button></li>
                 {
-                    activeMenu ?
-                        <ul className='app_navigation-links'>
-                            <li><Button variant='text' href="/">Home</Button></li>
-                            <li><Button variant='text' href="/appointment">Appointment</Button></li>
-                            {
-                                user.email ?
-                                    <Box style={flex}>
-                                        <li><Button variant='text' href="/dashboard">dashboard</Button></li>
-                                        <Button onClick={logout} style={{ margin: '0 f20px' }} color="inherit">Logout</Button>
-                                    </Box> :
-                                    <li><Button variant='text' href="/login">Login</Button></li>
-                            }
-                        </ul> :
-                        <>
-                            {
-                                toogleMenu ?
-                                    <>
-                                        <HiMenuAlt1 sx={{mt: 5}} onClick={() => setToggleMenu(false)} />
-                                        <ul style={{display: 'inlineGrid'}}>
-                                            <li><Button variant='text' href="/">Home</Button></li>
-                                            <li><Button variant='text' href="/appointment">Appointment</Button></li>
-                                            {
-                                                user.email ?
-                                                    <Box style={flex}>
-                                                        <li><Button variant='text' href="/dashboard">dashboard</Button></li>
-                                                        <Button onClick={logout} style={{ margin: '0 f20px' }} color="inherit">Logout</Button>
-                                                    </Box> :
-                                                    <li><Button variant='text' href="/login">Login</Button></li>
-                                            }
-                                        </ul>
-                                    </>
-                                    :
-                                    <GiHamburgerMenu onClick={() => setToggleMenu(true)} />
-                            }
-                        </>
+                    user.email ?
+                        <Box style={flex}>
+                            <li><Button variant='text' href="/dashboard">dashboard</Button></li>
+                            <Button onClick={logout} style={{ margin: '0 f20px' }} color="inherit">Logout</Button>
+                        </Box> :
+                        <li><Button variant='text' href="/login">Login</Button></li>
                 }
+            </ul> :
+                <Box>
+                    {!toggleMenu ? <GiHamburgerMenu fontSize={27}  onClick={() => setToggleMenu(true)}/> :
+                        <Box>
+                            <HiMenuAlt1 fontSize={27} onClick={() => setToggleMenu(false)}/>
+                            <ul className='app_navigation-links-mobile'>
+                                <li><Button color="inherit" href="/">Home</Button></li>
+                                <li><Button color="inherit" href="/appointment">Appointment</Button></li>
+                                {
+                                    user.email ?
+                                        <Box>
+                                            <li><Button color="inherit" href="/dashboard">dashboard</Button></li>
+                                            <Button onClick={logout} color="inherit">Logout</Button>
+                                        </Box> :
+                                        <li><Button color="inherit" href="/login">Login</Button></li>
+                                }
+                            </ul>
+                        </Box>}
+                </Box>
+            }
 
-            </nav>
-        </div>
+        </nav>
     );
 };
 

@@ -6,11 +6,12 @@
 .main_logo{
   width: auto;
   height: 12rem;
+  z-index: 2;
 }
 
 .app_navigation{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-top: -50px;
 }
@@ -26,9 +27,17 @@
 
 .app_navigation-links li {
   margin: 0 20px
-}
+} 
 
-.app_navigation-links li a{
-  text-decoration: none;
-  color: rgb(0, 0, 0);
+.app_navigation-links-mobile{
+  position: absolute;
+  display: block;
+  width: 100%;
+  list-style: none;
+  background-color: rgb(0, 132, 255);
+  color: white;
+  left: 0;
+  top: 75px;
+  transition: all 0.5s ease-out;
+  z-index: 5;
 }

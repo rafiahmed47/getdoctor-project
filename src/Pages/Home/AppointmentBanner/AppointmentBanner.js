@@ -15,7 +15,7 @@ const appointmentBg = {
 const AppointmentBanner = () => {
     return (
         <Box style={appointmentBg} sx={{ flexGrow: 1, m: '0 50px', borderRadius: '10px' }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2}  >
                 <Grid item xs={12} md={6} >
                     <img
                         style={{
@@ -31,7 +31,7 @@ const AppointmentBanner = () => {
                     alignItems: 'center',
                     textAlign: 'left'
                 }}>
-                    <Box>
+                    <Box style={{marginBottom: '1rem'}}>
                         <Typography variant='h4' sx={{ mb: 5 }} style={{ color: '#5CE7ED' }}>
                             Make an Appointment today
                         </Typography>
